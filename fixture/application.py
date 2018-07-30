@@ -1,4 +1,5 @@
 from selenium import webdriver
+from fixture.session import Session
 __author__ = 'sveta'
 
 class Application:
@@ -6,21 +7,11 @@ class Application:
     def __init__(self):
         self.wd = webdriver.Chrome()
         self.wd.implicitly_wait(60)
+        self.session = Session(self)
 
     def go_to_home_page(self):
         wd = self.wd
         wd.get("http://localhost/addressbook/")
-
-    def login(self, username="admin", password="secret"):
-        wd = self.wd
-        self.go_to_home_page()
-        wd.find_element_by_name("user").click()
-        wd.find_element_by_name("user").clear()
-        wd.find_element_by_name("user").send_keys(username)
-        wd.find_element_by_name("pass").click()
-        wd.find_element_by_name("pass").clear()
-        wd.find_element_by_name("pass").send_keys(password)
-        wd.find_element_by_xpath("//form[@id='LoginForm']/input[3]").click()
 
     def create_new_group(self, group):
         wd = self.wd
@@ -87,10 +78,6 @@ class Application:
         wd.find_element_by_name("byear").send_keys(contact.byear)
         wd.find_element_by_name("theform").click()
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
-
-    def logout(self):
-        wd = self.wd
-        wd.find_element_by_link_text("Logout").click()
 
     def destroy(self):
         self.wd.quit()

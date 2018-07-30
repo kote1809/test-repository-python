@@ -11,17 +11,17 @@ def app(request):
 
 
 def test_add_contact(app):
-    app.login()
+    app.session.login()
     app.create_new_contact(Contact(firstname="FN", middlename="MN", lastname="LN", nickname="NN", title="Title", company="Company", address="Street", home="123", mobile="123", work="123", fax="123",
                        email="r@d.ru", byear="1990"))
-    app.logout()
+    app.session.logout()
 
 
 def test_add_empty_contact(app):
-    app.login()
+    app.session.login()
     app.create_new_contact(Contact(firstname="", middlename="", lastname="", nickname="", title="", company="", address="",
                        home="", mobile="", work="", fax="",
                        email="", byear=""))
-    app.logout()
+    app.session.logout()
 
 
