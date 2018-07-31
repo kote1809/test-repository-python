@@ -2,6 +2,7 @@ from selenium import webdriver
 from fixture.session import Session
 from fixture.group import GroupHelper
 from fixture.contact import ContactHelper
+from fixture.conftest import Conftest
 __author__ = 'sveta'
 
 class Application:
@@ -12,6 +13,7 @@ class Application:
         self.session = Session(self)
         self.group = GroupHelper(self)
         self.contact = ContactHelper(self)
+        self.conftest = Conftest(self)
 
 
     def go_to_home_page(self):
