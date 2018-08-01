@@ -19,3 +19,12 @@ def test_add_empty_group(app):
     app.conftest.create_g(Group(group_name="", group_header="", group_footer=""))
     app.session.logout()
 
+def test_edit_group(app):
+    app.session.login()
+    app.conftest.edit_g(Group(group_name="SS", group_header="VV", group_footer="EE"))
+    app.session.logout()
+
+def test_delete_group(app):
+    app.session.login()
+    app.conftest.delete_g()
+    app.session.logout()

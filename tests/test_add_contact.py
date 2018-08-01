@@ -23,4 +23,13 @@ def test_add_empty_contact(app):
                                email="", byear=""))
     app.session.logout()
 
+def test_edit_c(app):
+    app.session.login()
+    app.conftest.edit_c(Contact(firstname="Sveta", middlename="Zhukova", lastname="Sv", nickname="Zh", title="Not title", company="Not", address="Address", home="900", mobile="900", work="900", fax="900",
+                               email="sveta@zhukova.ru", byear="1992"))
+    app.session.logout()
 
+def test_detete_c(app):
+    app.session.login()
+    app.conftest.detele_c()
+    app.session.logout()
